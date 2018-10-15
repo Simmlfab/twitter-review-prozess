@@ -16,16 +16,16 @@
         <bpmn:flowNodeRef>BoundaryEvent_1aqewro</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1d0re29" name="Automatisch">
+        <bpmn:flowNodeRef>Pruefergebnis</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_0fj9kmh</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TweetAnfrageBehandelt</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Pruefergebnis</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>MitarbeiterKuerzelExtrahieren</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TweetSenden</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>MitarbeiterBenachrichtigen</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="SequenceFlow_1vqcip2" sourceRef="TweetAnfrageEingereicht" targetRef="MitarbeiterKuerzelExtrahieren" />
-    <bpmn:startEvent id="TweetAnfrageEingereicht" name="Tweet-Anfrage&#10;eingereicht" camunda:initiator="anfrageStellenderBenutzer">
+    <bpmn:startEvent id="TweetAnfrageEingereicht" name="Tweet-Anfrage&#10;eingereicht" camunda:asyncAfter="true" camunda:initiator="anfrageStellenderBenutzer">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="email" label="E-Mail" type="string" />
@@ -268,9 +268,9 @@ execution.setVariable("alias", emailAdress.substring(0,4));</bpmn:script>
       <bpmndi:BPMNEdge id="SequenceFlow_1jhf8t5_di" bpmnElement="SequenceFlow_1jhf8t5">
         <di:waypoint x="377" y="270" />
         <di:waypoint x="377" y="506" />
-        <di:waypoint x="814" y="506" />
-        <di:waypoint x="814" y="386" />
-        <di:waypoint x="793" y="364" />
+        <di:waypoint x="827" y="506" />
+        <di:waypoint x="827" y="386" />
+        <di:waypoint x="795" y="362" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BoundaryEvent_0es2uk6_di" bpmnElement="BoundaryEvent_0ypqto9">
         <dc:Bounds x="694" y="40" width="36" height="36" />
