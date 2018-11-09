@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.zhaw.gpi.twitterreview.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 /**
 * Service-Klasse für die Kommunikation mit einem SMTP Server
@@ -18,6 +15,10 @@ import org.springframework.mail.SimpleMailMessage;
 * @author simmlfab
 */
 public class EmailService {
+    
+    //Verdrahten des JavaMailSenders
+    @Autowired
+    private JavaMailSender javaMailSender;
     /**
      * Sendet eine einfache Text-Mail
      *
@@ -27,6 +28,7 @@ public class EmailService {
      * @throws java.lang.Exception
      */
     @Value("$mail.senderaddress")
+    private String senderAddress;
     public void sendSimpleMail(String to, String subject, String body) throws Exception {
         // Instanziert eine neue SimpleMail-Nachricht
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
